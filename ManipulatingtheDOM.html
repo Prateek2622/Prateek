@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List Example</title>
+    <style>
+        /* Styling for the list items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="myList">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+
+    <script>
+        // Function to generate a random string
+        function getRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        // Add a new list item when the page loads
+        window.onload = function() {
+            const ul = document.getElementById('myList');
+            const newLi = document.createElement('li');
+            newLi.textContent = 'Fourth item';
+            ul.appendChild(newLi);
+
+            // Add click event listener to all list items
+            ul.querySelectorAll('li').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.textContent = getRandomString(10); // Change text to a random string of length 10
+                });
+            });
+        };
+    </script>
+</body>
+</html>

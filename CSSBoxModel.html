@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Example</title>
+    <style>
+        /* Initial styling for the div element */
+        #box {
+            width: 200px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #333;
+            margin: 20px;
+            background-color: #f0f0f0;
+            transition: all 0.3s ease; /* Smooth transitions for all properties */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">CSS Box Model</div>
+
+    <script>
+        // Get the box element
+        const box = document.getElementById('box');
+
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Event listener for clicking on the box to change the background color
+        box.addEventListener('click', () => {
+            box.style.backgroundColor = getRandomColor();
+        });
+
+        // Event listener for hovering over the box to change the border color
+        box.addEventListener('mouseover', () => {
+            box.style.borderColor = getRandomColor();
+        });
+
+        // Event listener for mouse out to reset the border color
+        box.addEventListener('mouseout', () => {
+            box.style.borderColor = '#333';
+        });
+
+        // Event listener for double-clicking to increase padding
+        box.addEventListener('dblclick', () => {
+            box.style.padding = '40px';
+        });
+
+        // Event listener for right-clicking to reset padding and background color
+        box.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            box.style.padding = '20px';
+            box.style.backgroundColor = '#f0f0f0';
+        });
+    </script>
+</body>
+</html>
